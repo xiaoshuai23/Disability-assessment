@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>社会支持评定量(SSRS)</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <style>
+        p{
+            line-height:170%;
+            padding-left:18px;
+        }
+        input[type="text"]{
+            border:none;
+            border-bottom: 1px solid #000; /* 下划线效果 */
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 5px;
+            text-align: center;
+        }
+        .numFive{
+            margin-left:18px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="">
+    <h2>社会支持评定量(SSRS)</h2>
+    <table align="center" width="100%">
+        <tr>
+            <h4>1.您有多少关系密切，可以得到支持和帮助的朋友<input type="text" readonly='readonly' value="">（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerOne" value="1">(1) 一个也没有；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerOne" value="2">(2) 1-2 个；（2 分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerOne" value="3">(3) 3-5 个；（3 分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerOne" value="4">(4) 6个或6个以上。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>2.近一年来您<input type="text"  readonly='readonly' value="">（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTwo" value="1">(1) 远离家人，且独居一室；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTwo" value="2">(2) 住处经常变动，多数时间和陌生人住在一起；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTwo" value="3">(3) 和同学、同事或朋友住在一起；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTwo" value="4">(4) 和家人住在一起。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>3.您与邻居<input type="text" readonly='readonly' value=""/>（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerThree" value="1">(1) 相互不交往，只是点头之交；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerThree" value="2">(2) 遇到困难可能稍微关心；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerThree" value="3">(3) 有些邻居很关心您；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerThree" value="4">(4) 大多数邻届都很关心您。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>4.您与同事（/以往同事） <input type="text" readonly='readonly' value=""/>（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFour" value="1">(1) 相互不交往，只是点头之交 （1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFour" value="2">(2) 遇到困难可能稍微关心；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFour" value="3">(3) 有些同事很关心您；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFour" value="4">(4) 大多数同事都很关心您。（4分）</label></p>
+
+        </tr>
+        <tr>
+            <h4>5.您从家庭成员得到的支持和照顾<input type="text"  readonly="readonly"/>（在合适的框内划“√”）</h4>
+            <table width="80%" class="numFive">
+                <tr>
+                    <td width="24%"></td>
+                    <td width="18%">①无(1分)</td>
+                    <td width="18%">②极少(2分)</td>
+                    <td width="18%">③一般(3分)</td>
+                    <td width="22%">④全力支持(4分)</td>
+                </tr>
+               <tr>
+                   <td>A.夫妻(恋人)</td>
+                   <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveOne" value="1"></label></td>
+                   <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveOne" value="2"></label></td>
+                   <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveOne" value="3"></label></td>
+                   <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveOne" value="4"></label></td>
+               </tr>
+                <tr>
+                    <td>B.父母</td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveTwo" value="1"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveTwo" value="2"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveTwo" value="3"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveTwo" value="4"></label></td>
+                </tr>
+                <tr>
+                    <td>C.儿女</td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveThree" value="1"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveThree" value="2"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveThree" value="3"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveThree" value="4"></label></td>
+                </tr>
+                <tr>
+                    <td>D.兄弟姐妹</td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFour" value="1"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFour" value="2"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFour" value="3"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFour" value="4"></label></td>
+                </tr>
+                <tr>
+                    <td>E.其他成员(如嫂子)</td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFive" value="1"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFive" value="2"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFive" value="3"></label></td>
+                    <td align="center"><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerFiveFive" value="4"></label></td>
+                </tr>
+            </table>
+        </tr>
+        <tr>
+            <h4>6.过去，在您遇到急难情况时，曾经得到的经济支持或解决实际问題的帮助的来源有<input type="text" readonly="readonly" value=""/></h4>
+            <p><label><input type="checkbox" onclick='radio.call(this);setDisabled("answerSix");' name="disability.answerSix" value="0">(1) 无任何来源；（0分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this);setDisabled("answerSix");' name="disability.answerSix" id='answerSix' value="a">(2) 下列来源（可选多项）：（每项1分）</label></p>
+            <p>
+                <label><input type="checkbox" name="disability.answerSixChild" value="A"> A.配偶；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="B"> B.其他家人；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="C"> C.朋友；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="D"> D.亲戚；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="E"> E.同事；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="F"> F.工作单位；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="G"> G.党团工会等官方或半官方组织；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="H"> H.宗教、社会团体等非官方组织；</label>
+                <label><input type="checkbox" name="disability.answerSixChild" value="I"> I.其他</label>
+            </p>
+
+        </tr>
+        <tr>
+            <h4>7.过去，在您遇到急难情况时，曾经得到的安慰和关心的来源有<input type="text" readonly="readonly" value=""/></h4>
+            <p><label><input type="checkbox" onclick='radio.call(this);setDisabled("answerSeven");' name="disability.answerSeven"  value="0">(1) 无任何来源；（0分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this);setDisabled("answerSeven");' name="disability.answerSeven" id='answerSeven' value="a">(2) 下列来源（可选多项）：（每项1分）</label></p>
+            <p>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="A"> A.配偶；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="B"> B.其他家人；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="C"> C.朋友；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="D"> D.亲戚；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="E"> E.同事；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="F"> F.工作单位；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="G"> G.党团工会等官方或半官方组织；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="H"> H.宗教、社会团体等非官方组织；</label>
+                <label><input type="checkbox" name="disability.answerSevenChild" value="I"> I.其他</label>
+            </p>
+        </tr>
+        <tr>
+            <h4>8.您遇到烦恼时的倾诉方式<input type="text" readonly="readonly" value="">（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerEight" value="1">(1) 从不向任何人诉述；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerEight" value="2">(2) 只向关系极为密切的儿个人诉述；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerEight" value="3">(3) 如果朋友主动询问您会说出来；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerEight" value="4">(4) 主动诉述自己的烦恼，以获得支持和理解。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>9.您遇到烦恼时的求助方式<input type="text" readonly="readonly"  value="">（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerNine" value="1">(1) 只靠自己，不接受别人帮助；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerNine" value="2">(2) 很少请求别人帮助；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerNine" value="3">(3) 有时请求别人帮助；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerNine" value="4">(4) 有困难时经常向家人、亲友、组织求援。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>10.对于团体（如党团组织、宗教组织、工会等）组织活动，您<input type="text" readonly="readonly" value="">（只选一项）</h4>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTen" value="1">(1) 从不参加；（1分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTen" value="2">(2) 偶尔参加；（2分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTen" value="3">(3) 经常参加；（3分）</label></p>
+            <p><label><input type="checkbox" onclick='radio.call(this)' name="disability.answerTen" value="4">(4) 主动参加并积极活动。（4分）</label></p>
+        </tr>
+        <tr>
+            <h4>11.以上10项总分为：<input type="text" id="answerTotal" name="disability.answerTotal" onclick=totalScore() readonly="readonly" value=""></h4>
+        </tr>
+        <tr>
+            <h4>12.社会支持等级为:</h4>
+            <p><label><input type="checkbox" name="disability.support" onclick='return false' value="0" />1级（低水平）：评分≤22分</label></p>
+            <p><label><input type="checkbox" name="disability.support" onclick='return false' value="1"/>2级（中等水平）：评分23分—44分</label></p>
+            <p><label><input type="checkbox" name="disability.support" onclick='return false' value="2"/>3级（高水平）：评分≥45分</label></p>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function setDisabled(name){
+        if($('input[name="disability.'+name+'"]:checked').eq(0).val()==0){
+            $('input[name="disability.'+name+'Child"]').each(function(i,v){
+                $(v).prop('disabled','disabled');
+                $(v).removeAttr('checked');
+            })
+        }else{
+            $('input[name="disability.'+name+'Child"]').each(function(i,v){
+                $(v).removeAttr('disabled')
+            })
+        }
+    }
+
+    function foo(){
+
+    }
+
+    $('input[name="disability.answerSixChild"]').each(function(i,v){
+        $(v).on('click',function(){
+           if($(v).is(':checked')){
+               $('#answerSix').prop('checked','checked');
+           }
+        })
+    })
+    $('input[name="disability.answerSevenChild"]').each(function(i,v){
+        $(v).on('click',function(){
+            if($(v).is(':checked')){
+                $('#answerSeven').prop('checked','checked');
+            }
+        })
+    })
+
+
+
+
+
+
+
+    function totalScore(){
+        if ($("input[name='disability.answerOne']:checked").val() == undefined) {
+//            alert('第一题未选择');
+            window.android.alert('第一题未选择');
+            return;
+        }else if($("input[name='disability.answerTwo']:checked").val() == undefined){
+//            alert('第二题未选择');
+            window.android.alert('第二题未选择');
+            return;
+        }else if($("input[name='disability.answerThree']:checked").val() == undefined){
+//            alert('第三题未选择');
+            window.android.alert('第三题未选择');
+            return;
+        }else if($("input[name='disability.answerFour']:checked").val() == undefined){
+//            alert('第四题未选择');
+            window.android.alert('第四题未选择');
+            return;
+        }else if($("input[name='disability.answerFiveOne']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.alert('第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveTwo']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.alert('第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveThree']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.alert('第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveFour']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.alert('第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveFive']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.alert('第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerSix']:checked").val() == undefined){
+//            alert('第六题未选择');
+            window.android.alert('第六题未选择');
+            return;
+        }else if($("input[name='disability.answerSix']:checked").val() == 'a'){
+            var arr=[];
+            $("input[name='disability.answerSixChild']:checked").each(function(i,v){
+                arr.push($(v).val());
+            })
+            if(arr.length==0){
+//                alert('第六题未选择完整');
+                window.android.alert('第六题未选择完整');
+                return;
+            }
+        }if($("input[name='disability.answerSeven']:checked").val() == undefined){
+//            alert('第七题未选择');
+            window.android.alert('第七题未选择');
+            return;
+        }else if($("input[name='disability.answerSeven']:checked").val() == 'a'){
+            var arr1=[];
+            $("input[name='disability.answerSevenChild']:checked").each(function(i,v){
+                arr1.push($(v).val());
+            })
+            if(arr1.length==0){
+//                alert('第七题未选择完整');
+                window.android.alert('第七题未选择完整');
+                return;
+            }
+        }if($("input[name='disability.answerEight']:checked").val() == undefined){
+//            alert('第八题未选择');
+            window.android.alert('第八题未选择');
+            return;
+        }else if($("input[name='disability.answerNine']:checked").val() == undefined){
+//            alert('第九题未选择');
+            window.android.alert('第九题未选择');
+            return;
+        }else if($("input[name='disability.answerTen']:checked").val() == undefined){
+//            alert('第十题未选择');
+            window.android.alert('第十题未选择');
+            return;
+        }
+
+        var datas = "";
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true);
+        var count=0;
+        datas.split('&').forEach(function(param){
+            param = param.split('=');
+            if((/[ABCDEFGHI]/).test(param[1])){
+                param[1]=1;
+            }
+            var name = param[0], val = parseInt(param[1]);
+            if(val&&name!='disability.answerTotal'){
+                count+=val;
+            }
+        })
+        $('input[name="disability.answerTotal"]').val(count);
+        if(count<=22){
+            $('input[name="disability.support"]').eq(0).prop('checked',true).siblings().removeAttr('checked');
+        }else if(count<=44){
+            $('input[name="disability.support"]').eq(1).prop('checked',true).siblings().removeAttr('checked');
+        }else if(count>=45){
+            $('input[name="disability.support"]').eq(2).prop('checked',true).siblings().removeAttr('checked');
+        }
+    }
+
+    function setDisabilityDatas(){
+        if ($("input[name='disability.answerOne']:checked").val() == undefined) {
+//            alert('第一题未选择');
+            window.android.setDisabilityDatas(-1, '第一题未选择');
+            return;
+        }else if($("input[name='disability.answerTwo']:checked").val() == undefined){
+//            alert('第二题未选择');
+            window.android.setDisabilityDatas(-1, '第二题未选择');
+            return;
+        }else if($("input[name='disability.answerThree']:checked").val() == undefined){
+//            alert('第三题未选择');
+            window.android.setDisabilityDatas(-1, '第三题未选择');
+            return;
+        }else if($("input[name='disability.answerFour']:checked").val() == undefined){
+//            alert('第四题未选择');
+            window.android.setDisabilityDatas(-1, '第四题未选择');
+            return;
+        }else if($("input[name='disability.answerFiveOne']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.setDisabilityDatas(-1, '第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveTwo']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.setDisabilityDatas(-1, '第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveThree']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.setDisabilityDatas(-1, '第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveFour']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.setDisabilityDatas(-1, '第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerFiveFive']:checked").val() == undefined){
+//            alert('第五题未选择完整');
+            window.android.setDisabilityDatas(-1, '第五题未选择完整');
+            return;
+        }else if($("input[name='disability.answerSix']:checked").val() == undefined){
+//            alert('第六题未选择');
+            window.android.setDisabilityDatas(-1, '第六题未选择');
+            return;
+        }else if($("input[name='disability.answerSix']:checked").val() == 'a'){
+            var arr=[];
+            $("input[name='disability.answerSixChild']:checked").each(function(i,v){
+                arr.push($(v).val());
+            })
+            if(arr.length==0){
+//                alert('第六题未选择完整');
+               window.android.setDisabilityDatas(-1, '第六题未选择完整');
+                return;
+            }
+        }if($("input[name='disability.answerSeven']:checked").val() == undefined){
+//            alert('第七题未选择');
+            window.android.setDisabilityDatas(-1, '第七题未选择');
+            return;
+        }else if($("input[name='disability.answerSeven']:checked").val() == 'a'){
+            var arr1=[];
+            $("input[name='disability.answerSevenChild']:checked").each(function(i,v){
+                arr1.push($(v).val());
+            })
+            if(arr1.length==0){
+//                alert('第七题未选择完整');
+                 window.android.setDisabilityDatas(-1, '第七题未选择完整');
+                return;
+            }
+        }if($("input[name='disability.answerEight']:checked").val() == undefined){
+//            alert('第八题未选择');
+            window.android.setDisabilityDatas(-1, '第八题未选择');
+            return;
+        }else if($("input[name='disability.answerNine']:checked").val() == undefined){
+//            alert('第九题未选择');
+            window.android.setDisabilityDatas(-1, '第九题未选择');
+            return;
+        }else if($("input[name='disability.answerTen']:checked").val() == undefined){
+//            alert('第十题未选择');
+            window.android.setDisabilityDatas(-1, '第十题未选择');
+            return;
+        }
+
+
+        var datas = "";
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true);
+        var count=0;
+        datas.split('&').forEach(function(param){
+            param = param.split('=');
+            if((/[ABCDEFGHI]/).test(param[1])){
+                param[1]=1;
+            }
+            var name = param[0], val = parseInt(param[1]);
+            if(val&&name!='disability.answerTotal'){
+                count+=val;
+            }
+        })
+        $('input[name="disability.answerTotal"]').val(count);
+        if(count<=22){
+            $('input[name="disability.support"]').eq(0).prop('checked',true).siblings().removeAttr('checked');
+        }else if(count<=44){
+            $('input[name="disability.support"]').eq(1).prop('checked',true).siblings().removeAttr('checked');
+        }else if(count>=45){
+            $('input[name="disability.support"]').eq(2).prop('checked',true).siblings().removeAttr('checked');
+        }
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true);
+//        console.log(datas);
+        window.android.setDisabilityDatas(0, datas);
+    }
+
+</script>
+</body>
+</html>

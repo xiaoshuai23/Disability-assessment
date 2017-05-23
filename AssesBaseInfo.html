@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>评估对象基本信息表</title>
+    <link rel="stylesheet" href="css/public.css">
+    <style>
+        input[type="text"] {
+            width: 100%;
+            height: 36px;
+            border: none;
+        }
+
+        #nation, #religiousBelief, #son, #daughter, #housing, #informationAcquisition, #participationEvaluation, #province, #city, #area, #street, #certnumber, #year, #mouth, #day {
+            border-bottom: 1px solid #000; /* 下划线效果 */
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 5px;
+            text-align: center;
+        }
+
+        #certnumber {
+            width: 260px;
+        }
+
+        table tr {
+            height: 36px;
+        }
+
+        table tr td {
+            height: 30px;
+            border: 1px solid #000;
+            padding: 5px;
+            line-height: 165%;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        h3 {
+            padding-left: 30px;
+        }
+    </style>
+
+    <script src="lib/jquery.min.js"></script>
+
+    <script src='js/public.js'></script>
+</head>
+<body>
+<form action="">
+    <h3>评估对象基本信息表</h3>
+    <table align="center" width="100%">
+        <tr>
+            <td align='center' width="18%">姓名</td>
+            <td><input type="text" width="62%" style="height:30px" readonly="readonly" name="disability.assessmentName"></td>
+            <td rowspan='4'>一寸彩照</td>
+        </tr>
+        <tr>
+            <td align="center">性别</td>
+            <td class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.sex" value="0">男</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.sex" value="1">女</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">民族</td>
+            <td class='no_select'>
+                <label>
+                    <input type="checkbox" onclick='radio.call(this)' name="disability.nation" value="0">汉族
+                </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name='disability.nation' class='nation' value="1">少数民族 <input type="text" id="nation" name="disability.nationOther" readonly='readonly'></label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">出生日期</td>
+            <td>
+                <select id="year" name="disability.year">
+                    <option value="0">首次评估</option>
+                    <option value="1">复核评估</option>
+                    <option value="2">动态评估</option>
+                </select>
+
+
+                <!--<input type="text" id="year" name="disability.year" maxlength="4" value=""/>年-->
+                <!--<input type="text" id="mouth" name="disability.mouth" maxlength="2" value=""/>月-->
+                <!--<input type="text" id="day" name="disability.day" maxlength="2" value=""/>日-->
+            </td>
+        </tr>
+        <tr>
+            <td align="center">籍贯</td>
+            <td colspan='2'>
+                <input type="text" id="province" name="disability.province" value=""/>省
+                <input type="text" id="city" name="disability.city" value=""/>市
+                <input type="text" id="area" name="disability.area" value=""/>区、县
+                <input type="text" id="street" name="disability.street" value=""/>街道
+
+            </td>
+        </tr>
+        <tr>
+            <td align="center">身份证号</td>
+            <td colspan='2' id='idcard'>
+                <input type="text" id="certnumber" name="disability.certnumber" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">婚姻状况</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.marriage" value="0">未婚</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.marriage" value="1">已婚</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.marriage" value="2">丧偶</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.marriage" value="3">离异</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">居住状况</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live" value="0">独居</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live"
+                              value="1">与配偶/伴侣居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live" value="2">与子女居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live" value="3">与父母居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live"
+                              value="4">与配偶和子女居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live"
+                              value="5">与兄弟姐妹居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live"
+                              value="6">与其余亲属居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live"
+                              value="7">与非亲属关系的人居住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.live" value="8">养老机构</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">文化程度</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="0">文盲</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="1">小学</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="2">初中</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="3">高中</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="4">技校</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="5">职高</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="6">中专</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="7">大专</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="8">本科</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture"
+                              value="9">硕士（及以上）</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.culture" value="10">不详</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">宗教信仰</td>
+            <td colspan="2">
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.religiousBelief"  value="0">无</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.religiousBelief" value="1" class="religiousBelief">有 <input type="text" id="religiousBelief" readonly='readonly'  name="disability.religiousBeliefHas" value=""></label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>职业类别</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="0">政府机关人员</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="1">事业单位人员</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="2">企业职工</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="3">个体户</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="4">自由职业</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.occupation"
+                              value="5">无业</label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>收入来源</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource" value="0">机关事业单位离退休金</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource" value="1">城乡居民养老保险</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource" value="2">供养人员补贴</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource"
+                              value="3">低保金</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource" value="4">子女抚养/补贴</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource"
+                              value="5">亲友资助</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.incomeSource"
+                              value="6">其他</label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>医疗类别</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="0">公费医疗</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="1">职工医保</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="2">居民医保</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="3">商业医疗保险</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="4">自费</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.medicalCategory" value="5">其他</label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>子女状况</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" name="disability.childStatus" value="0" onclick='radio.call(this)'>有子女
+                    （儿子 <input type="text" id="son" name="disability.sonCount" value="">个；女儿 <input
+                            type="text" id="daughter" name="disability.daughterCount" value="">个）</label>
+                <label><input type="checkbox" name="disability.childStatus" value="1" onclick='radio.call(this)'>无子女</label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>住房性质</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing"
+                              value="0">自有产权住房</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing"
+                              value="1">租赁住房</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing" value="2">借住</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing" value="3">廉租房</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing" value="4">公租房</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.housing" value="5"
+                              class="housing">其他 <input type="text" id="housing" name="disability.housingOther" value=""
+                                                        readonly="readonly"></label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>信息采集渠道</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="0">本人</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="1">家属</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="2">病历</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="3">医院诊断</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="4">健康档案</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.informationAcquisition"
+                              value="5" class='informationAcquisition'>其他 <input type="text" id="informationAcquisition"
+                                                                                 name="disability.informationAcquisitionOther"
+                                                                                 readonly="readonly"></label>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>参与评估人员</td>
+            <td colspan="2" class='no_select'>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="0">本人</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="1">子女</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="2">亲属</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="3">朋友</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="4">居委会工作人员</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.participationEvaluation"
+                              value="5" class='participationEvaluation'>其他 <input type="text"
+                                                                                  name="disability.participationEvaluationOther"
+                                                                                  id="participationEvaluation"
+                                                                                  readonly="readonly"></label>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<!--<button id="btn" onclick=setDisabilityDatas()>点击</button>-->
+
+<script>
+
+
+    function setDisabilityDatas() {
+        if ($("input[name='disability.sex']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择性别');
+            return;
+        } else if ($("input[name='disability.nation']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择民族');
+            return;
+        } else if ($("input[name='disability.nation']:checked").val() == '1') {
+            if ($("input[name='disability.nationOther']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写民族');
+                return;
+            }
+        }
+        if ($("input[name='disability.nation']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择民族');
+            return;
+        } else if (!(/^\d{4}$/.test($('#year').val())) || $('#year').val() == '') {
+            window.android.setDisabilityDatas(-1, '请正确填写出生年份，如：1990');
+            return;
+        } else if (!(/^\d{2}$/.test($('#mouth').val())) || $('#mouth').val() == "") {
+            window.android.setDisabilityDatas(-1, '请正确填写出生月份，如：06');
+            return;
+        } else if (!(/^\d{2}$/.test($('#day').val())) || $('#day').val() == "") {
+            window.android.setDisabilityDatas(-1, '请正确填写出生日期，如：08');
+            return;
+        } else if ($('#province').val() == '' || $('#city').val() == '' || $('#area').val() == '' || $('#street').val() == '') {
+            window.android.setDisabilityDatas(-1, '请填写完整籍贯');
+            return;
+        } else if (!(/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test($('#certnumber').val()))) {
+            window.android.setDisabilityDatas(-1, '请正确填写您的身份证号');
+            return;
+        } else if ($("input[name='disability.marriage']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的婚姻状况');
+            return;
+        } else if ($("input[name='disability.live']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的居住状况');
+            return;
+        } else if ($("input[name='disability.culture']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的文化程度');
+            return;
+        } else if ($("input[name='disability.religiousBelief']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的宗教信仰');
+            return;
+        } else if ($("input[name='disability.religiousBelief']:checked").val() == '1') {
+            if ($("input[name='disability.religiousBeliefHas']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写您信仰的宗教');
+                return;
+            }
+        }
+        if ($("input[name='disability.occupation']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的职业类别');
+            return;
+        } else if ($("input[name='disability.incomeSource']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的收入来源');
+            return;
+        } else if ($("input[name='disability.medicalCategory']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的医疗类别');
+            return;
+        }
+        else if ($("input[name='disability.childStatus']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的子女状况');
+            return;
+        } else if ($("input[name='disability.childStatus']:checked").val() == '0') {
+            if ($("input[name='disability.sonCount']").val() == '' && $("input[name='disability.daughterCount']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写您的子女个数');
+                return;
+            }
+        }
+        if ($("input[name='disability.housing']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的住房性质');
+            return;
+        } else if ($("input[name='disability.housing']:checked").val() == '5') {
+            if ($("input[name='disability.housingOther']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写您的住房性质');
+                return;
+            }
+        }
+        if ($("input[name='disability.informationAcquisition']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的信息采集渠道');
+            return;
+        } else if ($("input[name='disability.informationAcquisition']:checked").val() == '5') {
+            if ($("input[name='disability.informationAcquisitionOther']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写您的信息采集渠道');
+                return;
+            }
+        }
+        if ($("input[name='disability.participationEvaluation']:checked").val() == undefined) {
+            window.android.setDisabilityDatas(-1, '请选择您的参与评估人员');
+            return;
+        } else if ($("input[name='disability.participationEvaluation']:checked").val() == '5') {
+            if ($("input[name='disability.participationEvaluationOther']").val() == '') {
+                window.android.setDisabilityDatas(-1, '请手动填写您的参与评估人员');
+                return;
+            }
+        }
+        var datas = "";
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true)
+        window.android.setDisabilityDatas(0, datas);
+    };
+
+
+    setOther('nation');
+    setOther('religiousBelief');
+    setOther('housing');
+    setOther('informationAcquisition');
+    setOther('participationEvaluation');
+
+</script>
+
+</body>
+</html>

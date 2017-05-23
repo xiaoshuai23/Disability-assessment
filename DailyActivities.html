@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人能力评估表</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src='js/public.js'></script>
+    <style>
+        form table tr{
+            height: 48px;
+        }
+    </style>
+    <script src="lib/jquery.min.js"></script>
+    <script>
+        function compute(){
+            var count=0,flag=true;
+            $('.box').each(function(i,v){
+                if(v.value==""||v.value=="null"){
+                    flag=false;
+                    //alert("请填入完整");
+                    window.android.setDisabilityDatas(-1,"请填入完整评估项");
+                    return false;
+                }else if(v.value!='15'&& v.value!='10'&& v.value!='5'&& v.value!='0'){
+                    flag=false;
+                    //alert('第' + (i + 1) + '项输入有误,请重新输入');
+                    window.android.setDisabilityDatas(-1,'第' + (i + 1) + '项输入有误,请重新输入');
+                    return false;
+                }
+                count+=parseInt(v.value);
+            });
+            if(flag){
+                $('#total').val(count);
+                if(count==100){
+                    $('#scale').val('0');
+                }else if(count>=65&&count<=95){
+                    $('#scale').val('1');
+                }else if(count>=45&&count<=60){
+                    $('#scale').val('2');
+                }else if(count<=40){
+                    $('#scale').val('3');
+                }
+            }
+            return flag;
+        }
+        function sumNumber(){
+            var count=0;
+            $('.box').each(function(i,v){
+                if(v.value==""||v.value=="null"){
+                    //alert("请填入完整");
+                    window.android.alert("请填入完整评估项");
+                    return ;
+                }else if(v.value!='15'&& v.value!='10'&& v.value!='5'&& v.value!='0'){
+                    //alert('第' + (i + 1) + '项输入有误,请重新输入');
+                    window.android.alert('第' + (i + 1) + '项输入有误,请重新输入');
+                    return ;
+                }
+                count+=parseInt(v.value);
+            });
+
+            $('#total').val(count);
+            if(count==100){
+                $('#scale').val('0');
+            }else if(count>=65&&count<=95){
+                $('#scale').val('1');
+            }else if(count>=45&&count<=60){
+                $('#scale').val('2');
+            }else if(count<=40){
+                $('#scale').val('3');
+            }
+        }
+        function setDisabilityDatas(){
+               var bl=compute();
+               //alert(bl);
+               if(bl==false) return;
+                var datas="";
+                datas=$("form").serialize();
+                datas = decodeURIComponent(datas,true)
+                window.android.setDisabilityDatas(0,datas);
+        }
+    </script>
+</head>
+<body>
+
+<form action="">
+    <h5>日常生活活动评估表</h5>
+    <table align="center" width="100%">
+        <!--进食-->
+        <tr>
+            <td align='center' width="18%" rowspan="3">
+                <h4>进食：</h4>
+                <p>
+                    指用餐具将食物由容器送到口中、咀嚼、吞咽等过程
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly name="disability.eatScore" maxlength="2" value=""> 分
+            </td>
+            <td style="height:50px;" class="text_eatScore" >
+                10分，可以独立进食（在合理的时间内独立进食准备好的食物）
+            </td>
+        </tr>
+        <tr>
+            <td  class="text_eatScore">5分，需部分帮助（进食过程中需要一定帮助，如协助把持餐具）</td>
+        </tr>
+        <tr>
+            <td  class="text_eatScore">0分，需要极大帮助或完全依赖他人，或有留置营养管</td>
+        </tr>
+        <!--洗澡-->
+        <tr>
+            <td align='center' width="15%" rowspan="2">
+                <h4>洗澡</h4>
+            </td>
+            <td align='center' width="10%" rowspan="2">
+                <input type="text" class='box' readonly name="disability.showerScore" maxlength="1"  value="" inputmode="inputmode"> 分
+            </td>
+            <td class="text_showerScore">
+                5分，准备好洗澡水后，可自己独立完成洗澡过程
+            </td>
+        </tr>
+        <tr>
+            <td class="text_showerScore">0分，在洗澡过程中需要他人帮助</td>
+        </tr>
+        <!--修饰-->
+        <tr>
+            <td align='center' width="15%" rowspan="2">
+                <h4>修饰：</h4>
+                <p>
+                    指洗脸、刷牙、梳头、刮脸等
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="2">
+                <input type="text" class='box' readonly name="disability.modificationScore" maxlength="1"  value=""> 分
+            </td>
+            <td class="text_modificationScore">
+                5分，可自己独立完成
+            </td  >
+        </tr>
+        <tr>
+            <td  class="text_modificationScore">0分，需他人帮助</td>
+        </tr>
+        <!--穿衣-->
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>穿衣：</h4>
+                <p>
+                    指穿脱衣服、系扣、拉拉链、穿脱鞋袜、系鞋带
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly name="disability.dressingScore"  maxlength="2" value=""> 分
+            </td>
+            <td class="text_dressingScore">
+                10分，可以独立完成
+            </td>
+        </tr>
+        <tr>
+            <td class="text_dressingScore">5分，需部分帮助（能自己穿脱，但需他人帮助整理衣物、系扣/鞋带、拉拉链）</td>
+        </tr>
+        <tr>
+            <td class="text_dressingScore">0分，需要极大帮助或完全依赖他人</td>
+        </tr>
+
+        <!--大便控制-->
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>大便控制</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly name="disability.shitScore" maxlength="2"  value=""> 分
+            </td>
+            <td class="text_shitScore">
+                10分，可以控制大便
+            </td>
+        </tr>
+        <tr>
+            <td class="text_shitScore">5分，偶尔失控（每周<1次），或需要他人提示</td>
+        </tr>
+        <tr>
+            <td class="text_shitScore">0分，完全失控</td>
+        </tr>
+
+        <!--小便控制-->
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>小便控制</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly name="disability.urineScore" maxlength="2"  value=""> 分
+            </td>
+            <td class="text_urineScore">
+                10分，可以控制小便
+            </td>
+        </tr>
+        <tr>
+            <td class="text_urineScore">5分，偶尔失控（每天<1次，但每周>1次），或需要他人提示</td>
+        </tr>
+        <tr>
+            <td class="text_urineScore">0分，完全失控，或留置导尿管</td>
+        </tr>
+
+        <!--如厕-->
+
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>如厕：</h4>
+                <p>
+                    包括去厕所、解开衣裤、擦净、整理衣裤、冲水
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly name="disability.toiletScore" maxlength="2"  value=""> 分
+            </td>
+            <td class="text_toiletScore">
+                10分，可以独立完成
+            </td>
+        </tr>
+        <tr>
+            <td class="text_toiletScore">5分，需要部分帮助（需他人搀扶去厕所、需他人帮忙冲水或整理衣裤等）</td>
+        </tr>
+        <tr>
+            <td class="text_toiletScore">0分，需极大帮助或完全依赖他人</td>
+        </tr>
+
+        <!--床椅转移-->
+        <tr>
+            <td align='center' width="15%" rowspan="4">
+                <h4>床椅转移</h4>
+            </td>
+            <td align='center' width="10%" rowspan="4">
+                <input type="text" class='box'  readonly name="disability.bedChairTransfer" maxlength="2"  value=""> 分
+            </td>
+            <td class="text_bedChairTransfer">
+                15分，可独立完成
+            </td>
+        </tr>
+        <tr>
+            <td class="text_bedChairTransfer">10分，需要部分帮助（需他人搀扶或使用拐杖）</td>
+        </tr>
+        <tr>
+            <td class="text_bedChairTransfer">5分，需极大帮助（较大程度上依赖他人搀扶和帮助）</td>
+        </tr>
+        <tr>
+            <td class="text_bedChairTransfer">0分，完全依赖他人</td>
+        </tr>
+        <!--平地行走-->
+
+        <tr>
+            <td align='center' width="15%" rowspan="4">
+                <h4>平地行走</h4>
+            </td>
+            <td align='center' width="10%" rowspan="4">
+                <input type="text" class='box' readonly name="disability.flatWalkScore"  maxlength="2" value=""> 分
+            </td>
+            <td class="text_flatWalkScore">
+                15分，可独立在平地上行走45m
+            </td>
+        </tr>
+        <tr>
+            <td class="text_flatWalkScore">10分，需部分帮助（因肢体残疾、平衡能力差、过度衰弱、视力等问题，在一定程度上需要他人的搀扶或使用拐杖、助行器等辅助用具）</td>
+        </tr>
+        <tr>
+            <td class="text_flatWalkScore">5分，需极大帮助（因肢体残疾、平衡能力差、过度衰弱、视力等问题，在较大程度上依赖他人搀扶、或坐在轮椅上自行移动）</td>
+        </tr>
+        <tr>
+            <td class="text_flatWalkScore">0分，完全依赖他人</td>
+        </tr>
+
+        <!--上下楼梯-->
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>上下楼梯</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <!--<input type="text" class='box' name="disability.upAnddownStairsScore" maxlength="2" value="" onkeyup="compute();" /> 分-->
+                <input type="text" class='box' readonly name="disability.upAnddownStairsScore" maxlength="2" value="" /> 分
+            </td>
+            <td class="text_upAnddownStairsScore">
+                10分，可独立上下楼梯（连续上下10-15个台阶）
+            </td>
+        </tr>
+        <tr>
+            <td class="text_upAnddownStairsScore">5分，需要部分帮助（需他人搀扶，或扶着楼梯、使用拐杖等）</td>
+        </tr>
+        <tr>
+            <td class="text_upAnddownStairsScore">0分，需要极大帮助或者完全依赖他人</td>
+        </tr>
+        <!--日常生活，活动总分-->
+        <tr onclick="sumNumber();">
+            <td align='center' width="15%">
+                <h4>日常生活<br>活动总分</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text" id='total' name="disability.dailyLifeScore" value="" readonly="readonly" onclick="sumNumber();"> 分
+            </td>
+            <td onclick="sumNumber();">
+                以上10个项目得分之和
+            </td>
+        </tr>
+        <!--活动分级-->
+        <tr>
+            <td align='center' width="15%">
+                <h4>日常生活<br>活动分级</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text"  id='scale' name="disability.activityClassification" value="" readonly="readonly"> 级
+            </td>
+            <td style="padding:15px 10px">
+                <p>0能力完好：总分100分</p>
+                <p>1轻度受损：总分65-95分</p>
+                <p>2中度受损：总分45-60分</p>
+                <p>3重度受损：总分≤40分</p>
+</td>
+</tr>
+</table>
+</form>
+
+</body>
+<script>
+    callColorValue('eatScore','text_eatScore',[10,5,0]);
+    callColorValue('showerScore','text_showerScore',[5,0]);
+    callColorValue('modificationScore','text_modificationScore',[5,0]);
+    callColorValue('dressingScore','text_dressingScore',[10,5,0]);
+    callColorValue('shitScore','text_shitScore',[10,5,0]);
+    callColorValue('urineScore','text_urineScore',[10,5,0]);
+    callColorValue('toiletScore','text_toiletScore',[10,5,0]);
+    callColorValue('bedChairTransfer','text_bedChairTransfer',[15,10,5,0]);
+    callColorValue('flatWalkScore','text_flatWalkScore',[15,10,5,0]);
+    callColorValue('upAnddownStairsScore','text_upAnddownStairsScore',[10,5,0]);
+</script>
+</html>

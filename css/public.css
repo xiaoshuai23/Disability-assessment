@@ -1,0 +1,85 @@
+html,body,form,input,tr,td,table,h1,h2,h3,h4,h5,p,div,strong,u{
+    padding:0;
+    margin:0;
+}
+html,body{
+    width: 100%;
+    font-family:'宋体';
+    font-size:18px;
+}
+form{
+    width: 96%;
+    margin:60px auto;
+    margin-bottom:10px;
+    padding:0 2%;
+
+}
+form div{
+    line-height:170%;
+}
+label{
+    margin-right: 14px;
+    line-height: 170%;
+}
+form h1{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+input[type="text"] {
+    width:200px;
+    height: 24px;
+    text-align: center;
+    font-size: 1rem;
+    outline: 0;
+}
+table { border-collapse: collapse; }
+table td .box,table td #total,table td #scale{
+    width: 20px;
+    height: 20px;
+    border:1px solid #000;
+    outline:0;
+    text-align: center;
+}
+td{
+    height: 39px;
+    padding:5px 10px;
+    line-height:166%;
+}
+p{
+    line-height:120%;
+}
+
+th,td { border: 1px solid #000; }
+
+h3{
+    height: 50px;
+    padding-left: 30px;
+}
+h5{
+    padding-left: 30px;
+    margin-bottom:3px;
+    font-size:20px;
+}
+h4{
+    line-height: 120%;
+    margin:5px 0;
+}
+p .text{
+    border:none;
+    border-bottom: 1px solid #000; /* 下划线效果 */
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+#btn{
+    margin:10px 50%;
+    width: 50px;
+}
+input[type="checkbox"]{
+    zoom:180%;
+    vertical-align:middle
+}

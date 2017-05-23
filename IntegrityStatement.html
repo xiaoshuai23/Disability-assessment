@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人照顾需求等级评定表</title>
+    <link rel="stylesheet" href="css/public.css">
+    <style>
+        form{
+            width: 80%;
+            padding:0 10%;
+        }
+        p{
+            line-height: 170%;
+        }
+        p .text{
+            border:none;
+            border-bottom: 1px solid #000; /* 下划线效果 */
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 5px;
+            text-align: center;
+        }
+        strong{
+            margin-left:38px;
+        }
+        #btm{
+            margin-left:38px;
+        }
+
+    </style>
+    <script src='lib/jquery.min.js'></script>
+    <script src="js/public.js"></script>
+    <script>
+        function setDisabilityDatas(){
+        	var v=$("input[name='disability.relationship']:checked").val();
+        	
+            if( v=="" || v==null || v==undefined){
+                window.android.setDisabilityDatas(-1,"协助评估人与评估对象的关系必须填写");
+                return;
+            }
+            v=$('#assistAssessingPhone').val();
+            if(v==null || v.length<1) {
+                window.android.setDisabilityDatas(-1,"协助评估人联系电话必须填写");
+                return;
+            }
+            var datas="";
+            datas=$("form").serialize();
+            datas = decodeURIComponent(datas,true);
+            window.android.setDisabilityDatas(0,datas);
+            
+        }
+
+
+    </script>
+</head>
+<body>
+<form action="">
+    <h1>诚信声明</h1>
+    <p>
+        <strong>评估对象声明：</strong>以下调查中，我所提供的信息均为真实、合法、有效的，提供和回答的关于我的身体状况等均为我平常或近期的一贯表现情形。如有提供虚假材料的行为或做虚假陈述，愿意承担由此带来的相应后果。
+    </p>
+    <p>
+        <strong>协助评估人声明：</strong>我所提供的信息均为我平时所观察和了解的关于评估对象的一贯表现情形，无任何虚假申报的情况，若有虚假陈述，愿意承担相关责任。
+    </p>
+    <br/>
+    <br/>
+    <br/>
+    <div id="btm">
+        <P>评估对象（签字或按手印）:<input type="text" class="text" readonly='readonly'  style=" width:130px;"></P>
+        <br/>
+        <br/>
+        <br/>
+        <p>
+            签字日期：<input type="text" class="text" style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>月
+
+
+            <!--<u style="width:50px;"></u>年<u style="width:40px;"></u>月<u style="width:40px;"></u>日-->
+        </p>
+        <br/>
+        <br/>
+        <p>
+            协助评估人与评估对象的关系：
+        </p>
+        <br>
+        <div>
+            <label ><input type="checkbox"  class="relationshi radio" name="disability.relationship" value="0" />配偶 </label>
+            <label ><input type="checkbox"  class="relationshi radio" name="disability.relationship" value="1" />子女</label>
+            <label ><input type="checkbox"  class="relationshi radio" name="disability.relationship" value="2" />其他亲属</label>
+            <label ><input type="checkbox"  class="relationshi radio" name="disability.relationship" value="3" />雇佣照顾者</label>
+            <label ><input type="checkbox"  class="relationshi radio" name="disability.relationship" value="4" />其他</label>
+        </div>
+        <br>
+        <p>
+            协助评估人（签字）：<input type="text" class="text" readonly='readonly'  style=" width:130px;">
+        </p>
+        <br>
+        <p>
+            协助评估人身份证号码：<input type="text" class="text" readonly='readonly'  style=" width:240px;">
+        </p>
+        <br>
+        <p>
+            协助评估人联系电话：<input type="text" id="assistAssessingPhone" style=" width:180px;" class="text" name="disability.assistAssessingPhone" />
+        </p>
+        <br>
+        <p>
+            签字日期：<input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>月
+        </p>
+    </div>
+</form>
+<!--<button id="btn" onclick="setDisabilityDatas()">点击</button> -->
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>养老意愿评估</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <style>
+
+
+        td{
+            height: 40px;
+            padding:0 10px;
+            line-height:180%;
+        }
+        p{
+            line-height:170%;
+        }
+
+
+        /*--------*/
+        #confirm{
+            margin:50px auto;
+        }
+        #confirm p{
+            padding:10px 10px 40px 10px;
+            line-height: 190%;
+        }
+    </style>
+</head>
+<body>
+
+<form action="">
+    <h5>养老意愿评估表</h5>
+    <table align="center" width="100%">
+        <!--生活能力-->
+        <tr>
+            <td align='center' width="35%"></td>
+            <td width="30%">
+                意愿来源
+            </td>
+            <td width="45%" >
+                养老服务形式
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <h4>养老意愿</h4>
+            </td>
+            <td>
+               <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.intentionSource" value="0"/>个人意愿</label></p>
+               <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.intentionSource" value="1"/>法定监护人意愿（仅评估对象为无民事行为能力或限制行为能力人时考虑）</label></p>
+            </td>
+            <td>
+                <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.pensionService" value="0"/>由家人照顾养老</label></p>
+                <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.pensionService" value="1"/>社区居家养老</label></p>
+                <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.pensionService" value="2"/>机构养老</label></p>
+                <p><label><input type="checkbox"  onclick='radio.call(this)' name="disability.pensionService" value="2"/>暂时社区居家养老，以后有可能会考虑机构养老</label></p>
+                </td>
+        </tr>
+    </table>
+</form>
+
+    <div id="confirm">
+        <h1>确认声明</h1>
+        <p>&nbsp;&nbsp;我确认，上述调查表中所填写的内容，均是评估员根据我提供的关于本人/评估对象的实际情况和资料而如实填写的，我承认上述调查表内容的真实性。<br>&nbsp;&nbsp;特此声明。</p>
+        <p>
+            <span>评估对象（签字或按手印）：</span><u><input type="text" class="text"  style=" width:120px;" readonly='readonly'></u>
+            <span style="float:right">日期：
+                <input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>月
+            </span>
+        </p>
+        <p>
+            协助评估人（签字）:</span><u><input type="text" class="text"  style=" width:120px;" readonly='readonly'></u>
+            <span style="float:right">日期：
+                <input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>月
+            </span>
+        </p>
+
+    </div>
+<script>
+
+    function setDisabilityDatas(){
+        var v= $("input[name='disability.intentionSource']:checked").val();
+        if(v=="" || v=="null" || v== undefined) {
+            window.android.setDisabilityDatas(-1, "请选择老人养老意愿来源");
+            return ;
+        }
+        v= $("input[name='disability.pensionService']:checked").val();
+        if(v=="" || v=="null" || v== undefined) {
+            window.android.setDisabilityDatas(-1, "请选择老人养老服务形式");
+            return ;
+        }
+        var datas = "";
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true)
+        window.android.setDisabilityDatas(0, datas);
+    }
+</script>
+</body>
+</html>

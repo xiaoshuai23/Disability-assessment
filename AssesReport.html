@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人照顾需求等级评定报告</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <style>
+        h4{
+            line-height: 130%;
+            margin:10px 0;
+        }
+        td{
+            height: 40px;
+            padding:0 10px;
+            line-height:180%;
+        }
+        p{
+            line-height:170%;
+        }
+        input[type="text"]{
+            border:none;
+            text-align: center;
+            height:30px;
+            width:90%;
+        }
+        p input[class='text']{
+            border-bottom: 1px solid #000;
+            width: 60px;
+        }
+    </style>
+    <script>
+        function setDisabilityDatas(){
+            var v= $("input[name='disability.careLevel']:checked").val();
+            if(v==""||v=="null" || v== undefined) {
+                window.android.setDisabilityDatas(-1, "请评估老年人照顾需求等级");
+                return ;
+            }
+            v= $("input[name='disability.pensionIntention']:checked").val();
+            if(v==""||v=="null" || v== undefined) {
+                window.android.setDisabilityDatas(-1, "请评估老人养老意愿");
+                return ;
+            }
+            v= $("input[name='disability.serviceType']:checked").val();
+            if(v==""||v=="null" || v== undefined) {
+                window.android.setDisabilityDatas(-1, "请输入服务类型");
+                return ;
+            }
+            v= $("input[name='disability.serviceContent']:checked").val();
+            if(v==""||v=="null" || v== undefined) {
+                window.android.setDisabilityDatas(-1, "请输入服务内容");
+                return ;
+            }
+            v= $("textarea[name='disability.recommendedCareTime']").val();
+            if(v==null ||v=="null" || v.length<1) {
+                window.android.setDisabilityDatas(-1, "请输入建议照顾时间");
+                return ;
+            }
+            var datas = "";
+            datas = $("form").serialize();
+            datas = decodeURIComponent(datas, true)
+            console.log(datas);
+            window.android.setDisabilityDatas(0, datas);
+        }
+
+        function loadingData(datas) {
+            if(datas!=null && datas.length>10){
+                var i=0;
+                datas.split('&').forEach(function(param){
+                    param = param.split('=');
+                    var name = param[0], val = param[1];
+
+                    if( $('input[name ="' +name+'"]').attr('type')=='text'){
+                        $('input[name ="' +name+'"]').val(val);
+                    }else if($('input[name ="' +name+'"]').attr('type')=='checkbox'){
+                        $('input[name ="' + name + '"]').each(function(i,v){
+
+                            if($('input[name ="' +name+'"]').eq(i).val()==val){
+                                $('input[name ="' + name + '"]').eq(i).prop('checked',true);
+                            }
+                        });
+                    }else if($('input[name ="' +name+'"]').attr('type')=='hidden'){
+                        if(name=='disability.sex'){
+                            $('input[name ="' +name+'"]').val(val);
+                            if(val==0){
+                                $('#sex').val('男');
+                            }else if(val==1){
+                                $('#sex').val('女');
+                            }
+                        }if(name=='disability.assessmentType'){
+                            $('input[name ="' +name+'"]').val(val);
+                            if(val==0){
+                                $('#assessmentType').val('首次评估');
+                            }else if(val==1){
+                                $('#assessmentType').val('复核评估');
+                            }else if(val==2){
+                                $('#assessmentType').val('动态评估');
+                            }
+                        }
+                        if(name=='disability.assessmentNowTime'){
+                            //console.log(val);
+                            $('input[name ="' +name+'"]').val(val);
+                            $("#assessmentNowTime").text(val);
+                        }if(name=="disability.assessmentPreTime"){
+                            $('input[name ="' +name+'"]').val(val);
+                            $('#assessmentPreTime').text(val);
+                        }
+                    }
+                });
+            }
+            window.scrollTo(0, 0);
+            window.android.pageReady();
+        }
+
+
+    </script>
+</head>
+<body>
+<form action="">
+    <h5>老年人照顾需求等级评定报告</h5>
+    <table align="center" width="100%">
+        <!--生活能力-->
+        <tr>
+            <td width="14%"  align='center'><h4>姓&nbsp;&nbsp;名</h4></td>
+            <td width="17%"  align='center'>
+                <input type="text" name="disability.memberNamer" readonly='readonly' value=''>
+            </td>
+            <td  width="16%" align='center'><h4>性&nbsp;&nbsp;别</h4></td>
+            <td  width="18%" align='center'>
+                <input type="hidden" name="disability.sex" readonly='readonly' >
+                <input type="text" id='sex' readonly='readonly'>
+            </td>
+            <td width="17%"  align='center'><h4>出生日期</h4></td>
+            <td width="21%"  align='center'>
+                <input type="text"  style='width:35%' name="disability.year" readonly='readonly'>.<input type="text" style='width:15%'  name="disability.mouth" readonly='readonly'>.<input type="text" style='width:15%' name="disability.day" readonly='readonly'>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>区、街镇</h4></td>
+            <td align='center'>
+                <input type="text" name="disability.address" readonly='readonly'>
+            </td>
+            <td align='center'><h4>身份证号</h4></td>
+            <td colspan="3" align='center'>
+                <input type="text" name="disability.certnumber" readonly='readonly'>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>评估类别</h4></td>
+            <td align='center'>
+                <input type="hidden" name="disability.assessmentType" readonly='readonly'>
+                <input type="text"  id='assessmentType' readonly='readonly'>
+            </td>
+            <td align='center'><h4>评估时间</h4></td>
+            <td align='center'>
+                <input type="hidden" name="disability.assessmentNowTime" readonly='readonly'>
+                <div id='assessmentNowTime'>
+
+                </div>
+            </td>
+            <td align='center'><h4>上次评估时间</h4></td>
+            <td align='center'>
+                <input type="hidden" name="disability.assessmentPreTime" readonly='readonly'>
+                <div id='assessmentPreTime'>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" align='center'><h4>主要参数评分</h4></td>
+            <td >老年人能力</td>
+            <td colspan="4">
+                <label><input type="checkbox" name="disability.ability"  value="0" onclick="return false;" />0级（能力完好）</label>
+                <label><input type="checkbox" name="disability.ability"  value="1" onclick="return false;" />1级（轻度失能）</label><br>
+                <label><input type="checkbox" name="disability.ability"  value="2" onclick="return false;"/>2级（中度失能）</label>
+                <label><input type="checkbox" name="disability.ability"  value="3" onclick="return false;"/>3级（重度失能）</label>
+        </tr>
+        <tr>
+            <td >医疗照护</td>
+            <td colspan="4">
+                <label><input type="checkbox" name="disability.medical"  value="0" onclick="return false;"/>0级（正常）&nbsp;&nbsp;</label>
+                <label><input type="checkbox" name="disability.medical"  value="1" onclick="return false;"/>1级（轻度依赖）</label><br>
+                <label><input type="checkbox" name="disability.medical"  value="2" onclick="return false;"/>2级（中度依赖）</label>
+                <label><input type="checkbox" name="disability.medical"  value="3" onclick="return false;"/>3级（重度依赖）</label><br>
+                <label><input type="checkbox" name="disability.medical"  value="4" onclick="return false;"/>4级（极重度依赖）</label>
+            </td>
+        </tr>
+        <tr>
+            <td >疾病状况</td>
+            <td colspan="4">
+                <label><input type="checkbox" name="disability.disease"  value="0" onclick="return false;"/>0级</label>
+                <label><input type="checkbox" name="disability.disease"  value="1" onclick="return false;"/>1级</label>
+                <label><input type="checkbox" name="disability.disease"  value="2" onclick="return false;"/>2级</label>
+                <label><input type="checkbox" name="disability.disease"  value="3" onclick="return false;"/>3级</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center'><h4>社会支持等级</h4></td>
+            <td colspan="5">
+                <label><input type="checkbox" name="disability.support"  value="0" onclick="return false;"/>1级（低水平）</label>
+                <label><input type="checkbox" name="disability.support"  value="1" onclick="return false;"/>2级（中等水平）</label>
+                <label><input type="checkbox" name="disability.support"  value="2" onclick="return false;"/>3级（高水平）</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center'><h4>老年人照顾需求等级</h4></td>
+            <td colspan="5">
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="0"/>照顾0级</label>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="1"/>照顾1级</label>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="2"/>照顾2级</label>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="3"/>照顾3级</label><br>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="4"/>照顾4级</label>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="5"/>照顾5级</label>
+                <label><input type="checkbox" name="disability.careLevel" onclick='radio.call(this)' value="6"/>照顾6级</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center'><h4>养老意愿</h4></td>
+            <td colspan="5">
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.pensionIntention" value="0"/>社区居家养老</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.pensionIntention" value="1"/>机构养老</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td align='center' rowspan="4"><h4>养老服务建议</h4></td>
+            <td><h4>服务类型</h4></td>
+            <td colspan="4">
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.serviceType" value="0"/>社区居家养老&nbsp;&nbsp;</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.serviceType" value="1"/>机构养老</label>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2"><h4>服务内容</h4></td>
+            <td colspan="4">
+                <label><input type="checkbox"  name="disability.serviceContent" value="0"/>穿衣</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="1"/>修饰</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="2"/>口腔清洁</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="3"/>皮肤清洁</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="4"/>喂食服务</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="5"/>压疮预防</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="6"/>排泄照料</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="7"/>居室清洁</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="8"/>更换洗涤</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="9"/>上门维修</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="10"/>定期探访</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="11"/>膳食服务</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="12"/>文化教育</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="13"/>娱乐休闲</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="14"/>室外休闲（户外）</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="15"/>紧急呼援</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="16"/>定位搜寻</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="17"/>转介服务</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="18"/>法律援助</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="19"/>咨询服务</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="20"/>沟通</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="21"/>精神支持</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="22"/>心理疏导</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="23"/>心理咨询</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="24"/>心理咨询</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="25"/>定期翻身、活动肢体关节</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="26"/>肢体保健、康复活动</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="27"/>预防保健</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="28"/>健康咨询</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="29"/>医疗协助</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="30"/>上门医疗</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="29"/>医疗协助</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="30"/>上门医疗</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="31"/>基础医疗护理</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="32"/>治疗护理</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="33"/>健康管理</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="34"/>健康教育</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="35"/>感染控制</label>
+                <label><input type="checkbox"  name="disability.serviceContent" value="36"/>临终关怀</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                其他：<textarea style="width: 90%;height: 75px; margin-top:10px;" id="serviceContentOther" name="disability.serviceContentOther"></textarea>
+            </td>
+        </tr>
+        <tr>
+           <td colspan="5">
+               备注：评估对象有疑似
+               <label><input type="checkbox" name="disability.suspected" value="0"/>精神病</label>
+               <label><input type="checkbox" name="disability.suspected" value="1"/>传染性疾病</label>传染性疾病的，应由相应专业结构提供服务。
+           </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>建议照顾时间</h4></td>
+            <td colspan="5"><textarea style="width: 90%;height: 50px; margin-top:10px;" id="recommendedCareTime" name="disability.recommendedCareTime" ></textarea></td>
+        </tr>
+        <tr>
+            <td align='center'><h4>特殊情况描述</h4></td>
+            <td colspan="5"><textarea style="width: 90%;height: 115px; margin-top:10px;" id="specialCaseDescription" name="disability.specialCaseDescription" ></textarea></td>
+        </tr>
+
+        <tr>
+            <td align='center'><h4>评估员确认</h4></td>
+            <td colspan="5">
+
+                <p style="height: 50px;margin-top: 30px;">签名：<input type="text" class="text" readonly='readonly'  style=" width:140px;"><span style="margin-left: 100px;"><input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>日</span></span></p>
+                <p style="height: 50px;">签名：<input type="text" class="text" readonly='readonly'  style=" width:140px;"><span style="margin-left: 100px;"><input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>日</span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>评估机构确认</h4></td>
+            <td colspan="5">
+                <p style="margin:80px 80px 0 0; float:right">（盖章）</p>
+
+                <p style="margin:120px -80px 10px 0; float:right"><input type="text" class="text"  style=" width:80px;" readonly='readonly'>年<input type="text" class="text" readonly='readonly'>月<input type="text" class="text" readonly='readonly'>日</p>
+            </td>
+        </tr>
+    </table>
+    <p style="width: 90%;padding-left: 5px; font-size:16px">
+        备注：1.评估对象及其法定监护人对评估结论有异议时，可以向申请首次评估的部门提出复核评估 申请。
+    </p>
+    <p style="width: 90%;padding-left: 5px; font-size:16px; text-indent: 48px;">
+        2.评估对象身体如有特殊情况，如失聪、失明、失能、不能自理、需要辅助器具等可在“特殊情况描述”栏目中说明。
+    </p>
+</form>
+
+</body>
+</html>

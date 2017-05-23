@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人照顾需求等级评定表</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src='lib/jquery.min.js'></script>
+    <script src="js/public.js"></script>
+    <style>
+        form h1{
+            font-size:30px;
+            margin-top:150px;
+        }
+        p{
+            font-size:20px;
+            text-align: center;
+        }
+        #assessmentType{
+            width: 116px;
+            height: 27px;
+            font-size:18px;
+            font-family: '宋体';
+        }
+
+        #assessmentCount{
+            width:60px;
+        }
+        #id{
+            width:260px;
+        }
+    </style>
+    <script>
+        function setDisabilityDatas(){
+            if($('#assessmentName').val()==""){
+                window.android.setDisabilityDatas(-1,"评估对象姓名必须填写");
+                return;
+            }else if($('#address').val()==''){
+                window.android.setDisabilityDatas(-1,"地址必须填写");
+                return;
+            }else if($('#assessmentCount').val()==''){
+                window.android.setDisabilityDatas(-1,"请填写评估次数");
+                return;
+            }else if($('#assessmentEmployeeName').val()==''){
+                window.android.setDisabilityDatas(-1,"请填写评估员姓名");
+                return;
+            }else if($('#assessmentOrganization').val()==""){
+                window.android.setDisabilityDatas(-1,"请填写评估机构");
+                return;
+            }else{
+                var datas="";
+                datas=$("form").serialize();
+                datas = decodeURIComponent(datas,true)
+                window.android.setDisabilityDatas(0,datas);
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="">
+    <h1>老年人照顾需求等级评定表</h1>
+    <p>
+        评估对象姓名：<input type="text" id="assessmentName" name="disability.assessmentName"  />
+    </p>
+    <br/>
+    <br/>
+    <p style="margin-left:58px;">
+        区、街：<input type="text" id="address" name="disability.address"/>
+    </p>
+    <br/>
+    <br/>
+    <p style="margin-left:78px;">
+        评估表编号：<input type="text" id="id" name="disability.id" value="20170519111211586228864" readonly="readonly"/>
+    </p>
+    <br/>
+    <br/>
+    <p style="margin-left:-15px;">
+        评估类别：<select id="assessmentType" name="disability.assessmentType">
+        <option value="0">首次评估</option>
+        <option value="1">复核评估</option>
+        <option value="2">动态评估</option>
+    </select>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+    </p>
+    <br/>
+    <br/>
+    <p style="margin-left:-65px;">
+        评估次数：第<input type="text" style="text-align:center;" id="assessmentCount" name="disability.assessmentCount"  />次
+    </p>
+    <br/>
+    <br/>
+    <p>
+        上次评估日期：<input type="text" id="assessmentLastTime" name="disability.assessmentLastTime" value="" readonly="readonly" />
+    </p>
+    <br/>
+    <br/>
+    <p>
+        本次评估日期：<input type="text" id="assessmentNowTime" name="disability.assessmentNowTime" value="" readonly="readonly"/>
+    </p>
+    <br/>
+    <br/>
+    <p style="margin-left:18px;">
+        评估员姓名：<input type="text"  id="assessmentEmployeeName" name="disability.assessmentEmployeeName"  />
+    </p>
+    <br/>
+    <br/>
+
+    <p style="margin-left:39px;">
+        评估机构：<input type="text" id="assessmentOrganization" name="disability.assessmentOrganization" />
+    </p>
+
+</form>
+<!--<button id="btn" onclick=setDisabilityDatas()>点击</button>-->
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>医疗照护评估</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+
+</head>
+<body>
+
+<form action="">
+    <h5>医疗照护评估表</h5>
+    <table align="center" width="100%">
+        <!--基础护理-->
+        <tr>
+            <td align='center' width="12%" rowspan="4">
+                <h4>基础护理</h4>
+            </td>
+            <td width="24%" rowspan="4">
+                包括:晨间护理、晚间护理、个人清洁、整理床单位、协助翻身、呕吐淸洁、排泄护理、压疮预防等
+            </td>
+            <td >
+                正常：能独立完成日常基础护理工作
+            </td>
+        </tr>
+        <tr>
+            <td>轻度依赖：部分基础护理工作需在指导和协助下完成</td>
+        </tr>
+        <tr>
+            <td>中度依赖：需在专业护理人员指导下，由护理员协助完成大部分的护理工作</td>
+        </tr>
+        <tr>
+            <td>重度依赖：需在专业护理人员指导下，由专业护理人员与护理员完成基础护理工作</td>
+        </tr>
+
+        <!--常规治疗护理-->
+        <tr>
+            <td align='center' rowspan="4">
+                <h4>常规治疗护理</h4>
+            </td>
+            <td rowspan="4">
+                包括:生命体征监测、吸氧、 特殊口腔护理、物理降温、鼻饲、血糖检测、压疮换药、 静脉采血、肌注、灌肠、导尿、膀胱冲洗、坐浴、会阴护理、口服给药等
+            </td>
+            <td>
+                正常：能独立完成日常治疗护理
+            </td>
+        </tr>
+        <tr>
+            <td>轻度依赖：部分治疗护理工作需在指导和协助下完成</td>
+        </tr>
+        <tr>
+            <td>
+                中度依赖：需在专业护理人员指导下，由护士协助完成大部分护理工作
+            </td>
+        </tr>
+        <tr>
+            <td>
+                重度依赖：需在专业护理人员指导下，由专业护理人员与护理员完成护理工作
+            </td>
+        </tr>
+
+
+        <!--康复护理-->
+        <tr>
+            <td align='center' rowspan="4">
+                <h4>康复护理</h4>
+            </td>
+            <td rowspan="4">
+                包括:预防继发性残疾和并发症的发生;功能训练的护理；日常生活活动能力的训练；假肢、矫形器、自助器、 步行器等的使用指导及训练
+            </td>
+            <td>
+                正常：预防护理
+            </td>
+        </tr>
+        <tr>
+            <td>轻度依赖：有潜在的护理并发症发生的可能，在指导下能掌握预防措施及相关康复锻炼</td>
+        </tr>
+        <tr>
+            <td>
+                中度依赖：发生护理并发症的风险较高，需在指导和协助下进行预防措施及康复锻炼
+            </td>
+        </tr>
+        <tr>
+            <td>
+                重度依赖：发生护理并发症的风险高，需进行专业护理干预及康复锻炼
+            </td>
+        </tr>
+
+        <!--特殊治疗 /护理-->
+        <tr>
+            <td align='center'>
+                <h4>特殊治疗 /护理</h4>
+            </td>
+            <td>
+                过去7天内评估对象所接受的特殊治疗项S或状态，包括在家及医院门诊接受的治疗
+            </td>
+            <td>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="0"/>放射治疗 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="1"/>化学治疗 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="2"/>持续吸氧/吸痰 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="3"/>处于造口适应期</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="4"/>使用监护仪 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="5"/>人工呼吸机 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="6"/>压疮III级  </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="7"/>频繁伤口换药（大换药/特大换药）</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="8"/>静脉营养</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="9"/>气管切开处理</label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.therapyOrNursing" value="10"/>严重皮肤溃疡</label>
+            </td>
+        </tr>
+
+    <!--医疗照护分级-->
+        <tr>
+            <td align='center' rowspan="5">
+                <h4>医疗照护分级</h4>
+            </td>
+            <td align='center' rowspan="5">
+                <input type="text" class='box' readonly name="disability.healthCareLevel" maxlength="1" value=""> 分
+            </td>
+            <td class="text_healthCareLevel">
+                0级：基础护理评为正常或轻度依赖，常规治疗护理和康复护理正常
+            </td>
+        </tr>
+        <tr>
+            <td class="text_healthCareLevel">1级：基础护理中度依赖，常规治疗护理、康复护理轻度依赖</td>
+        </tr>
+        <tr>
+            <td class="text_healthCareLevel">2级：基础护理重度依赖，常规治疗护理或康复护理中度依赖</td>
+        </tr>
+        <tr>
+            <td class="text_healthCareLevel">3级：常规治疗护理或康复护理评为重度依赖</td>
+        </tr>
+        <tr>
+            <td class="text_healthCareLevel">4级：接受特殊治疗/护理</td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+
+
+    function setDisabilityDatas(){
+        var v=$('input[name ="disability.healthCareLevel"]').val();
+        if(v==null || v.length<1){
+            window.android.setDisabilityDatas(-1, '请输入医疗照护分级评估值');
+            return;
+        }
+        if(v!='0'&& v!='1'&& v!='2'&& v!='3' && v!='4' ){
+            window.android.setDisabilityDatas(-1,'请输入正确的医疗照护分级评估值');
+            return ;
+        }
+        var datas="";
+        datas=$("form").serialize();
+        datas = decodeURIComponent(datas,true)
+        window.android.setDisabilityDatas(0,datas);
+    }
+
+    callColorValue('healthCareLevel','text_healthCareLevel',[0,1,2,3,4]);
+</script>
+</html>

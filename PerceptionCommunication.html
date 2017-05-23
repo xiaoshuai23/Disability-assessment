@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人能力评估表</title>
+    <link rel="stylesheet" href="css/public.css" />
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <script type="text/javascript">
+        function compute(){
+            var flag=true;
+            var v=$('input[name ="disability.consciousnessLevelScore"]').val();
+            if(v==""||v=="null") {
+                flag = false;
+                window.android.setDisabilityDatas(-1, "请填入意识水平评估项");
+                return false;
+            }
+            if(v!='0'&&v!='1'&&v!='2' &&v!='3'){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'意识水平评估项输入有误 请重新输入');
+                return false;
+            }
+            v=$('input[name ="disability.visionScore"]').val();
+            if(v==""||v=="null") {
+                flag = false;
+                window.android.setDisabilityDatas(-1, "请填入视力评估项");
+                return false;
+            }
+            if(v!='0'&&v!='1'&&v!='2' &&v!='3' &&v!='4'){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'视力评估项输入有误 请重新输入');
+                return false;
+            }
+            v=$('input[name ="disability.hearingScore"]').val();
+            if(v==""||v=="null") {
+                flag = false;
+                window.android.setDisabilityDatas(-1, "请填入听力评估项");
+                return false;
+            }
+            if(v!='0'&&v!='1'&&v!='2' &&v!='3' &&v!='4'){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'听力评估项输入有误 请重新输入');
+                return false;
+            }
+            v=$('input[name ="disability.communicationScore"]').val();
+            if(v==""||v=="null") {
+                flag = false;
+                window.android.setDisabilityDatas(-1, "请填入沟通交流评估项");
+                return false;
+            }
+            if(v!='0'&&v!='1'&&v!='2' &&v!='3' ){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'沟通交流评估项输入有误 请重新输入');
+                return false;
+            }
+            v=$('input[name ="disability.perceptionAndCommunication"]').val();
+            if(v==""||v=="null") {
+                flag = false;
+                window.android.setDisabilityDatas(-1, "请填入感知觉与沟通分级评估项");
+                return false;
+            }
+            if(v!='0'&&v!='1'&&v!='2' &&v!='3' ){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'感知觉与沟通分级评估项输入有误 请重新输入');
+                return false;
+            }
+            return flag;
+        }
+
+        function setDisabilityDatas(){
+            var bl=compute();
+            //alert(bl)
+            if(bl==false) return;
+            var datas="";
+            datas=$("form").serialize();
+            datas = decodeURIComponent(datas,true)
+            window.android.setDisabilityDatas(0,datas);
+
+        }
+
+
+    </script>
+</head>
+<body>
+<form action="">
+    <h5>感知觉与沟通评估表</h5>
+    <table align="center" width="100%">
+        <!--意识水平-->
+        <tr>
+            <td align='center' width="15%" rowspan="4">
+                <h4>意识水平</h4>
+            </td>
+            <td align='center' width="10%" rowspan="4">
+                <input type="text" class='box' readonly  name="disability.consciousnessLevelScore" maxlength="1" value=""> 分
+            </td>
+            <td class="text_consciousnessLevelScore">
+                0分，神志清醒，对周围环境警觉
+            </td>
+        </tr>
+        <tr>
+            <td class="text_consciousnessLevelScore">1分，嗜睡，表现为睡眠状态过度延长。当呼唤或推动其肢体时可唤醒，并能进行正确的交谈或执行指令，停止刺激后又继续入睡</td>
+        </tr>
+        <tr>
+            <td class="text_consciousnessLevelScore">2分，昏睡，一般的外界刺激不能使其觉醒，给予较强烈的刺激时可有短时的意识清醒，醒后可简短冋答提问，当刺激减弱后又很快进入睡眠状态</td>
+        </tr>
+        <tr>
+            <td class="text_consciousnessLevelScore">3分，昏迷，处于浅昏迷时对疼痛刺激有冋避和痛苦表情；处于深昏迷时对刺激无反应（若评定为昏迷，直接评定为重度失能，可不进行以下项目的评估）</td>
+        </tr>
+
+        <!--视力：-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>视力：</h4>
+                <p>若平日带老花镜或近视镜，应在佩戴眼镜的情况下评估</p>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.visionScore" maxlength="1"  value=""> 分
+            </td>
+            <td class="text_visionScore">
+                0分，能看清书报上的标准字体
+            </td>
+        </tr>
+        <tr>
+            <td class="text_visionScore">1分，能看清楚大字体，但看不清书报上的标准字体</td>
+        </tr>
+        <tr>
+            <td class="text_visionScore">
+                2分，视力有限，看不清报纸大标题，但能辨认物体
+            </td>
+        </tr>
+        <tr>
+            <td class="text_visionScore">
+                3分，辨认物体有困难，但眼睛能跟随物体移动，只能看到光、颜色和形状
+            </td>
+        </tr>
+        <tr>
+            <td class="text_visionScore">
+                4分，没有视力，眼睛不能跟随物体移动
+            </td>
+        </tr>
+
+        <!--听力-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>听力：</h4>
+                <p>
+                    若平时佩戴助听器，应在佩戴助听器的情况下评估
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.hearingScore"  maxlength="1"  value=""> 分
+            </td>
+            <td class="text_hearingScore">
+                0分，可正常交谈，能听到电视、电话、门铃的卢音
+            </td>
+        </tr>
+        <tr>
+            <td class="text_hearingScore">1分，在轻声说话或说话距离超过2米时听不清</td>
+        </tr>
+        <tr>
+            <td class="text_hearingScore">
+                2分，正常交流有些困难，需在安静的环静或大声说话才能听到
+            </td>
+        </tr>
+        <tr>
+            <td class="text_hearingScore">
+                3分，讲话者火声说话或说话很慢，才能部分听见
+            </td>
+        </tr>
+        <tr>
+            <td class="text_hearingScore">
+                4分，完全听不见
+            </td>
+        </tr>
+
+        <!--沟通交流-->
+        <tr>
+            <td align='center' width="15%" rowspan="4">
+                <h4>沟通交流：</h4>
+                <p>
+                    包括非语言沟通
+                </p>
+            </td>
+            <td align='center' width="10%" rowspan="4">
+                <input type="text" class='box' readonly name="disability.communicationScore"  maxlength="1" value=""> 分
+            </td>
+            <td class="text_communicationScore">
+                0分，无困难，能与他人正常沟通和交流
+            </td>
+        </tr>
+        <tr>
+            <td class="text_communicationScore">1分，能够表达自己的需要及理解别人的话，但需要增加时间或给予帮助</td>
+        </tr>
+        <tr>
+            <td class="text_communicationScore">2分，表达需要或理解有困难，需频繁重复或简化口头表达</td>
+        </tr>
+        <tr>
+            <td class="text_communicationScore">
+                3分，不能表达需要或理解他人的话
+            </td>
+        </tr>
+
+        <!--感知觉与沟通分级-->
+        <tr>
+            <td align='center' width="15%" rowspan="4">
+                <h4>感知觉与沟通分级</h4>
+            </td>
+            <td align='center' width="10%"  rowspan="4">
+                <input type="text" class='box' readonly name="disability.perceptionAndCommunication" value=""  maxlength="1" > 级
+            </td>
+            <td class="text_perceptionAndCommunication" >
+                <p style='overflow:hidden;'><div style="float:left;">0能力完好：</div><div style="width: 80% ; float:left;">意识清醒，且视力和听力评为0或1，沟通评为0;</div> </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="text_perceptionAndCommunication">
+                <p style='overflow:hidden;'><div style="float:left;">1轻度受损：</div><div style="width: 80% ; float:left;">意识清醒，但视力或听力中至少一项评为2,或沟通评为1;</div> </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="text_perceptionAndCommunication">
+                <p style='overflow:hidden;'><div style="float:left;">2中度受损：</div><div style="width: 80% ; float:left;">意识清醒，但视力或听力中至少一项评为3,或沟通评为2;或嗜睡，视力或听力评定为3及以下，沟通评定为2及以下;</div> </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="text_perceptionAndCommunication">
+                <p style='overflow:hidden;'><div style="float:left;">3重度受损：</div><div style="width: 80% ; float:left;">意识清醒或嗜睡，但视力或听力中至少一项评为4,或沟通评为3;</div> </p>
+            </td>
+        </tr>
+    </table>
+</form>
+<!--<button type=button onclick=setDisabilityDatas()>测试</button>-->
+<script>
+    callColorValue('consciousnessLevelScore','text_consciousnessLevelScore',[0,1,2,3]);
+    callColorValue('visionScore','text_visionScore',[0,1,2,3,4]);
+    callColorValue('hearingScore','text_hearingScore',[0,1,2,3,4]);
+    callColorValue('communicationScore','text_communicationScore',[0,1,2,3]);
+    callColorValue('perceptionAndCommunication','text_perceptionAndCommunication',[0,1,2,3]);
+</script>
+</body>
+</html>

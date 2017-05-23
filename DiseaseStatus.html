@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>疾病状况评估</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <style>
+
+        td {
+            height: 40px;
+            padding: 0 10px;
+            line-height: 180%;
+        }
+
+        p {
+            line-height: 170%;
+        }
+
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px solid #000; /* 下划线效果 */
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 5px;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<form action="">
+    <h5>疾病状况评估表</h5>
+    <table align="center" width="100%">
+        <!--一类疾病-->
+        <tr>
+            <td align='center' width="16%" rowspan="9">
+                <h4>一类疾病</h4>
+            </td>
+            <td width="16%">
+                心血管系统
+            </td>
+            <td>
+                <label><input type="checkbox" name="disability.cardiovascular" value="0"/>冠心病 </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="1"/>高血压 </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="2"/>风湿性心脏病 </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="3"/>心绞痛 </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="4"/>心律失常（一般性） </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="5"/>心力衰竭（I-II级） </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="6"/>主动脉瘤/动脉夹层 </label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="7"/>动脉粥样硬化/动脉狭窄</label>
+                <label><input type="checkbox" name="disability.cardiovascular" value="8"/>缺血性心脏病 </label>
+                <p>其他：<input type="text" name="disability.cardiovascularOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>呼吸系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.breathing" value="0"/>慢性阻塞性肺疾病 </label>
+                <label><input type="checkbox" name="disability.breathing" value="1"/>肺气肿</label>
+                <label><input type="checkbox" name="disability.breathing" value="2"/>支气管哮喘 </label>
+                <label><input type="checkbox" name="disability.breathing" value="3"/>支气管扩张 </label>
+                <label><input type="checkbox" name="disability.breathing" value="4"/>慢性支气管炎口 </label>
+                <p>其他：<input type="text" name="disability.breathingOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>代谢和内分泌系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.metabolize" value="0"/>甲亢/甲减</label>
+                <label><input type="checkbox" name="disability.metabolize" value="1"/>糖尿病 </label>
+                <label><input type="checkbox" name="disability.metabolize" value="2"/>类风湿性关节炎 </label>
+                <label><input type="checkbox" name="disability.metabolize" value="3"/>营养不良 </label>
+                <label><input type="checkbox" name="disability.metabolize" value="4"/>高尿酸血症和痛风 </label>
+                <label><input type="checkbox" name="disability.metabolize" value="5"/>骨质疏松症</label>
+                <label><input type="checkbox" name="disability.metabolize" value="6"/>代谢综合症 </label>
+                <label><input type="checkbox" name="disability.metabolize" value="7"/>高脂血症 </label>
+                <p>其他：<input type="text" name="disability.metabolizeOther" value=""/></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>消化系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.digestion" value="0"/>消化性溃疡</label>
+                <label><input type="checkbox" name="disability.digestion" value="1"/>肝硬化</label>
+                <label><input type="checkbox" name="disability.digestion" value="2"/>其他消化系统疾病</label>
+                <p>其他：<input type="text" name="disability.digestionOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>骨/关节/脊柱</td>
+            <td>
+                <label><input type="checkbox" name="disability.boneJointSpine" value="0"/>骨折（下肢、上肢）</label>
+                <label><input type="checkbox" name="disability.boneJointSpine" value="1"/>关节炎 </label>
+                <label><input type="checkbox" name="disability.boneJointSpine" value="2"/>颈椎病</label>
+                <label><input type="checkbox" name="disability.boneJointSpine" value="3"/>腰椎病</label>
+                <p>其他：<input type="text" name="disability.boneJointSpineOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>神经系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.nerve" value="0"/>帕金森综合征 </label>
+                <label><input type="checkbox" name="disability.nerve" value="1"/>癫痫 </label>
+                <label><input type="checkbox" name="disability.nerve" value="2"/>脑出血/脑梗死 </label>
+                <label><input type="checkbox" name="disability.nerve" value="3"/>后循环缺血 </label>
+                <label><input type="checkbox" name="disability.nerve" value="4"/>抑郁症（轻型） </label>
+                <p>其他：<input type="text" name="disability.nerveOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>泌尿生殖系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.genitourinary" value="0"/>慢性肾功能不全（非尿毒症期） </label>
+                <label><input type="checkbox" name="disability.genitourinary" value="1"/>前列腺疾病 </label>
+                <p>其他：<input type="text" name="disability.genitourinaryOther" value=""/></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>血液系统</td>
+            <td>
+                <label><input type="checkbox" name="disability.blood" value="0"/>贫血</label>
+                <label><input type="checkbox" name="disability.blood" value="1"/>骨髓异常综合症 </label>
+                <p>其他：<input type="text" name="disability.bloodOther" value=""/></p>
+            </td>
+        </tr>
+        <tr>
+            <td>其他：</td>
+            <td>
+                <label><input type="checkbox" name="disability.other" value="0"/>肿瘤（早期、中期）</label>
+
+            </td>
+        </tr>
+
+        <!--特殊治疗 /护理-->
+        <tr>
+            <td align='center'>
+                <h4>二类疾病</h4>
+            </td>
+            <td>
+            </td>
+            <td>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="0"/>痴呆 </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="1"/>肿瘤（晚期）</label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="2"/>严重心律失常 </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="3"/>褥疮</label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="4"/>慢性心力衰竭（心功能III-IV级）
+                </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="5"/>慢性肾功能衰竭（尿毐症期） </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="6"/>多器官功能衰竭 </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="7"/>蛋白质能量营养不足（重度）</label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="8"/>慢性阻塞性肺疾病（肺心病心
+                    功能III-IV级）</label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="9"/>呼吸衰竭 </label>
+                <label><input type="checkbox" name="disability.twoKindsOfDiseases" value="10"/>脑血管意外合并吞咽障碍</label>
+                <p>其他：<input type="text" name="disability.twoKindsOfDiseasesOther" value=""/></p>
+            </td>
+        </tr>
+
+        <tr onclick="sunNumber()">
+            <td align='center' rowspan="4">
+                <h4>疾病状况分级</h4>
+            </td>
+            <td align='center' rowspan="5">
+                <input type="text" class='box' id='diseaseLevel' readonly name="disability.diseaseLevel" maxlength="1"   value="0"> 级
+            </td>
+            <td class="text_diseaseLevel">
+                0级：无上述第一、第二类疾病。
+            </td>
+        </tr>
+        <tr>
+            <td class="text_diseaseLevel">1级：患有1-2种第一类疾病</td>
+        </tr>
+        <tr>
+            <td class="text_diseaseLevel">2级：患有3种及3种以上第一类疾病。</td>
+        </tr>
+        <tr>
+            <td class="text_diseaseLevel">3级：患有第二类疾病。</td>
+        </tr>
+    </table>
+</form>
+<!--<button id='btn' onclick='setDisabilityDatas1()'>点击</button>-->
+<script>
+
+    var datas = "";
+    function sunNumber(){
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true);
+        var obj = {};
+        datas.split('&').forEach(function (param) {
+            param = param.split('=');
+            var name = param[0], val = param[1];
+            if (val != ''&& name!='disability.diseaseLevel') {
+                obj[name] = val;
+            }
+        });
+        $('#diseaseLevel').val('0');
+        if ($.isEmptyObject(obj)) {
+//	            console.log(1);
+            $('#diseaseLevel').val('0');
+        }else if(Object.keys(obj).length>=1&&Object.keys(obj).length<=2 &&obj['disability.twoKindsOfDiseasesOther']==undefined &&obj["disability.twoKindsOfDiseases"]==undefined){
+            $('#diseaseLevel').val('1');
+        }else if(Object.keys(obj).length>=3&&obj['disability.twoKindsOfDiseasesOther']==undefined &&obj["disability.twoKindsOfDiseases"]==undefined){
+            $('#diseaseLevel').val('2');
+        }else{
+            $('#diseaseLevel').val('3');
+        }
+    }
+
+    function setDisabilityDatas() {
+        if(datas==null || datas.length<1){
+            window.android.setDisabilityDatas(-1,"评估疾病状况状况");
+            return ;
+        }
+        window.android.setDisabilityDatas(0,datas);
+    }
+
+
+</script>
+
+</body>
+</html>

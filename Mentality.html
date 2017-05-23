@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人能力评估表</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+    <script>
+        function compute(){
+            var count=0,flag=true;
+            $('.box').each(function(i,v){
+
+                if(v.value==""||v.value=="null"){
+
+                    flag=false;
+                    //alert("请填入完整");
+                    window.android.setDisabilityDatas(-1,"请填入完整评估项");
+                    return false;
+                }else if(v.value!='0'&&v.value!='1'&&v.value!='2'){
+                    flag=false;
+                    //alert('');
+                    window.android.setDisabilityDatas(-1,'第' + (i + 1) + '项输入有误,请重新输入');
+                    return false;
+                }
+                count+=parseInt(v.value);
+            });
+            if(flag){
+                $('#total').val(count);
+                if(count==0){
+                    $('#scale').val('0');
+                }else if(count==1){
+                    $('#scale').val('1');
+                }else if(count>=2&&count<=3){
+                    $('#scale').val('2');
+                }else if(count>=4&&count<=6){
+                    $('#scale').val('3');
+                }
+            }
+            return flag;
+        }
+        function sumNumber(){
+            var count=0;
+            $('.box').each(function(i,v){
+                if(v.value==""||v.value=="null"){
+                    //alert("请填入完整");
+                    window.android.alert("请填入完整评估项");
+                    return ;
+                }else if(v.value!='0'&&v.value!='1'&&v.value!='2'){
+                    //alert('第' + (i + 1) + '项输入有误,请重新输入');
+                    window.android.alert('第' + (i + 1) + '项输入有误,请重新输入');
+                    return ;
+                }
+                count+=parseInt(v.value);
+            });
+            $('#total').val(count);
+            if(count==0){
+                $('#scale').val('0');
+            }else if(count==1){
+                $('#scale').val('1');
+            }else if(count>=2&&count<=3){
+                $('#scale').val('2');
+            }else if(count>=4&&count<=6){
+                $('#scale').val('3');
+            }
+        }
+        function setDisabilityDatas(){
+            var bl=compute();
+            if(bl==false) return;
+            var datas="";
+            datas=$("form").serialize();
+            datas = decodeURIComponent(datas,true)
+            window.android.setDisabilityDatas(0,datas);
+
+        }
+
+
+    </script>
+    <style>
+        #answer{
+            border:none;
+            border-bottom: 1px solid #000; /* 下划线效果 */
+            width: 210px;
+            height: 30px;
+            line-height: 25px;
+            margin-left: 5px;
+            text-align: center;
+        }
+        #draw{
+            height: 230px;
+        }
+        #draw p{
+           margin-top:0;
+            height: 30px;
+        }
+        #draw div{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <h5>精神状态评估表</h5>
+    <table align="center" width="100%">
+        <!--认知功能-->
+        <tr>
+            <td align='center' width="15%" rowspan="6">
+                <h4>认知功能</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                测验
+            </td>
+            <td>
+                “我说两样东西，请重复一遍，并记住，一会儿会问您”：苹果、手表、国旗
+            </td>
+        </tr>
+        <tr>
+            <td id="draw">
+                <p>(1)画钟测验：“请您在这儿画一个圆形的时钟，在时钟上标出10点45分”</p>
+                <div></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>(2)回忆词语：“现在请您告诉我，刚才我要您记住的两样东西是什么？”</p>
+                <p>答：<input type="text" id="answer" name="disability.answer" value="">（不必按顺序）</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" align='center'>
+                <p>评分</p>
+                <p><input type="text" readonly id="cognitiveFunctionScore" class='box' name="disability.cognitiveFunctionScore" maxlength="1" value=""/>分</p>
+            </td>
+            <td class="text_cognitiveFunctionScore">
+                0分，画钟正确（画出一个闭锁圆，指针位置准确），且能回忆出2-3个词
+            </td>
+        </tr>
+        <tr>
+            <td class="text_cognitiveFunctionScore">1分，画钟错误（画的圆不闭锁，或指针位置不准确），或只冋忆出0-1个词</td>
+        </tr>
+        <tr>
+            <td class="text_cognitiveFunctionScore">2分，已确诊为认知障碍，如老年痴呆</td>
+        </tr>
+
+
+        <!--攻击行为-->
+
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>攻击行为</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box' readonly  name="disability.aggressiveBehaviorScore" maxlength="1"  value=""> 分
+            </td>
+            <td class="text_aggressiveBehaviorScore">
+                0分，无身体攻击行为（如打/踢/推/咬/抓/摔东西）和语言攻击行为（如骂人、语言威胁、尖叫）
+            </td>
+        </tr>
+        <tr>
+            <td class="text_aggressiveBehaviorScore">1分，每月有儿次身体攻击行为，或每周有几次语言攻击行为</td>
+        </tr>
+        <tr>
+            <td class="text_aggressiveBehaviorScore">2分，每周有几次身体攻击行为，或每日有语言攻击行为</td>
+        </tr>
+
+        <!--抑郁症状-->
+        <tr>
+            <td align='center' width="15%" rowspan="3">
+                <h4>抑郁症状</h4>
+            </td>
+            <td align='center' width="10%" rowspan="3">
+                <input type="text" class='box'  readonly name="disability.depressedScore" maxlength="1"  value="" > 分
+            </td>
+            <td class="text_depressedScore">
+                0分，无
+            </td>
+        </tr>
+        <tr>
+            <td class="text_depressedScore">1分，情绪低落、不爱说话、不爱梳洗、不爱活动</td>
+        </tr>
+        <tr>
+            <td class="text_depressedScore">2分，有自杀念头或0杀行为</td>
+        </tr>
+
+        <!--精神状态总分-->
+        <tr onclick="sumNumber();">
+            <td align='center' width="15%">
+                <h4>精神状态总分</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text"  id='total' name="disability.mentalitySumScore" value="" readonly="readonly" onclick="sumNumber();"> 分
+            </td>
+            <td>
+                以上3个项目得分之和
+            </td>
+        </tr>
+        <!--精神状态分级-->
+        <tr>
+            <td align='center' width="15%">
+                <h4>精神状态分级</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text"  id='scale' name="disability.mentalStatusClassification"  value="" readonly="readonly"> 级
+            </td>
+            <td style="padding:15px 10px">
+                <p>0能力完好：总分0分</p>
+                <p>1轻度受损：总分1分</p>
+                <p>2中度受损：总分2-3分</p>
+                <p>3重度受损：总分4-6分</p>
+            </td>
+        </tr>
+
+    </table>
+</form>
+<script>
+    callColorValue('cognitiveFunctionScore','text_cognitiveFunctionScore',[0,1,2]);
+    callColorValue('aggressiveBehaviorScore','text_aggressiveBehaviorScore',[0,1,2]);
+    callColorValue('depressedScore','text_depressedScore',[0,1,2]);
+</script>
+</body>
+</html>

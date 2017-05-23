@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>老年人能力分级</title>
+    <link rel="stylesheet" href="css/public.css">
+    <style>
+        .totalScore{
+            border:none;
+            width: 36px !important;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        p{
+            line-height:160%;
+        }
+    </style>
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+
+</head>
+<body>
+<form action="">
+    <h5>老年人能力分级</h5>
+    <table align="center" width="100%">
+        <!--生活能力-->
+        <tr>
+            <td align='center' width="28%" rowspan="2"><h4>二级指标分级</h4></td>
+            <td width="36%">
+                日常生活活动：<input type="text" class='box'  name="disability.activityClassification" readonly='readonly'  value=""> 级
+                <br>（总分：<input type="text" class="totalScore" name="disability.dailyLifeScore" readonly='readonly'>）
+            </td>
+            <td width="36%" >
+                精神状态：<input type="text" class='box' name="disability.mentalStatusClassification"  readonly='readonly'  value=""> 级
+                <br>（总分：<input type="text" class="totalScore" name="disability.mentalitySumScore" readonly='readonly'>）
+            </td>
+        </tr>
+        <tr>
+            <td>
+                感知觉与沟通：<input type="text" class='box'  name="disability.perceptionAndCommunication" readonly='readonly'  value=""> 级
+            </td>
+            <td>
+                社会参与：<input type="text" class='box' name="disability.socialParticipationClassification" readonly='readonly'  value=""> 级
+                <br>（总分：<input type="text" class="totalScore" name="disability.socialParticipationScore" readonly='readonly'>）
+            </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>等级变更条款</h4></td>
+            <td colspan="2">
+                <p>1、有认知障碍/痴呆、精神疾病者，在原有能力级别上提高一个等级；</p>
+                <p>2、近30天内发生过2次及以上跌倒、噎食、自杀、走失者，在原有能力级别上提高一个等级；</p>
+                <p>3、处于昏迷状态者，直接评定为重度失能；</p>
+                <p>4、若初步等级确定为“3重度失能”，则不考虑上述1-3中各情况对最终等级的影响，等级不再提高。</p>
+            </td>
+        </tr>
+        <tr>
+            <td align='center'><h4>老年人能力最终等级</h4></td>
+            <td colspan="2">
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.elderlyAbility" value="0"/>0能力完好 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.elderlyAbility" value="1"/>1轻度失能 </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.elderlyAbility" value="2"/>2中度失能  </label>
+                <label><input type="checkbox" onclick='radio.call(this)' name="disability.elderlyAbility" value="3"/>3重度失能  </label>
+            </td>
+        </tr>
+    </table>
+    <!--<button type=button onclick=setDisabilityDatas() >测试</button>-->
+    <script>
+        function setDisabilityDatas(){
+            var v= $("input[name='disability.elderlyAbility']:checked").val();
+            if(v==""||v=="null" || v== undefined) {
+                window.android.setDisabilityDatas(-1, "请评估老年人能力最终等级");
+                return ;
+            }
+            var datas = "";
+            datas = $("form").serialize();
+            datas = decodeURIComponent(datas, true)
+            window.android.setDisabilityDatas(0, datas);
+        }
+    </script>
+
+</form>
+</body>
+</html>

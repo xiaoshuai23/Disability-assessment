@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>社会参与评估表</title>
+    <link rel="stylesheet" href="css/public.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src='js/public.js'></script>
+</head>
+<body>
+
+<form action="">
+    <h5>社会参与评估表</h5>
+    <table align="center" width="100%">
+        <!--生活能力-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>生活能力</h4>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.lifeAbilityScore"  maxlength="1" value=""> 分
+            </td>
+            <td class="text_lifeAbilityScore">
+                0分，除个人生活自理外（如饮食、洗漱、穿戴、二便），能料理家务（如做饭、洗衣）或当家管理事务
+            </td>
+        </tr>
+        <tr>
+            <td class="text_lifeAbilityScore">1分，除个人生活自理外，能做家务，但欠好，家庭事务安排欠条理</td>
+        </tr>
+        <tr>
+            <td class="text_lifeAbilityScore">2分，个人生活能0理；只有在他人帮助下才能做些家务，但质量不好</td>
+        </tr>
+        <tr>
+            <td class="text_lifeAbilityScore">
+                3分，个人基本生活事务能自理（如饮食、二便），在督促下可洗漱
+            </td>
+        </tr>
+        <tr>
+            <td class="text_lifeAbilityScore">
+                4分，个人基本生活事务（如饮食、便）需要部分帮助或完全依赖他人帮助
+            </td>
+        </tr>
+
+        <!--工作能力-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>工作能力</h4>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.workingAbilityScore"  maxlength="1"  value=""> 分
+            </td>
+            <td class="text_workingAbilityScore">
+                0分，原来熟练的脑力工作或体力技巧性1:作可照常进行
+            </td>
+        </tr>
+        <tr>
+            <td class="text_workingAbilityScore">1分，原来熟练的脑力1:作或体力技巧性工作能力有所下降</td>
+        </tr>
+        <tr>
+            <td class="text_workingAbilityScore">
+                2分，原来熟练的脑力工作或体力技巧性丨:作明显不如以往，部分遗忘
+            </td>
+        </tr>
+        <tr>
+            <td class="text_workingAbilityScore">
+                3分，对熟练工作只有一些片段保留，技能全部遗忘
+            </td>
+        </tr>
+        <tr>
+            <td class="text_workingAbilityScore">
+                4分，对以往的知识或技能全部磨灭
+            </td>
+        </tr>
+
+        <!--时间/空间定向-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>时间/空间定向</h4>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box'  readonly name="disability.timeOrSpaceScore"  maxlength="1"  value=""> 分
+            </td>
+            <td class="text_timeOrSpaceScore">
+                0分，时间观念（年、月、日、时）清楚；可单独出远门，能很快掌握新环境的方位
+            </td>
+        </tr>
+        <tr>
+            <td class="text_timeOrSpaceScore">1分，时间观念有些下降，年、月、日清楚，但有时相差几天；可单独来往丁-近街，知道现住地的名称和方位，但不知回家路线</td>
+        </tr>
+        <tr>
+            <td class="text_timeOrSpaceScore">
+                2分 ，时间观念较差，年、月、日不清楚，可知上半年或下半年；只能单独在家附近行动，对现住地只知名称，不知道方位
+            </td>
+        </tr>
+        <tr>
+            <td class="text_timeOrSpaceScore">
+                3分 ，时间观念很差，年、月、日不清楚，可知上午或下午；只能在左邻右舍间串门，对现住地不知名称和方位
+            </td>
+        </tr>
+        <tr>
+            <td class="text_timeOrSpaceScore">
+                4分，无时间观念；不能单独外出
+            </td>
+        </tr>
+
+        <!--人物定向-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>人物定向</h4>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.characterScore"  maxlength="2" value=""> 分
+            </td>
+            <td class="text_characterScore">
+                0分，知道周围人们的关系，知道祖孙、叔伯、姑姨、侄子侄女等称谓的意义；可分辨陌生人的大致年龄和身份，可用适当称呼
+            </td>
+        </tr>
+        <tr>
+            <td class="text_characterScore">1分，只知家中亲密近亲的关系，不会分辨陌生人的大致年龄，不能称呼陌生人</td>
+        </tr>
+        <tr>
+            <td class="text_characterScore">2分，只能称呼家中人，或只能照样称呼，不知其关系，不辨辈分</td>
+        </tr>
+        <tr>
+            <td class="text_characterScore">
+                3分，只认识常同住的亲人，可称呼子女或孙子女，可辨熟人和生人
+            </td>
+        </tr>
+        <tr>
+            <td class="text_characterScore">
+                4分，只认识保护人，不辨熟人和生人
+            </td>
+        </tr>
+
+        <!--社会交往能力-->
+        <tr>
+            <td align='center' width="15%" rowspan="5">
+                <h4>社会交往能力</h4>
+            </td>
+            <td align='center' width="10%" rowspan="5">
+                <input type="text" class='box' readonly name="disability.socialCommunicationScore" maxlength="1"  value=""> 分
+            </td>
+            <td class="text_socialCommunicationScore">
+                0分，参与社会，在社会环境有一定的适应能力，待人接物恰当
+            </td>
+        </tr>
+        <tr>
+            <td class="text_socialCommunicationScore">1分，能适应单纯环境，主动接触人，初见面时难让人发现智力问题，不能理解隐喻语</td>
+        </tr>
+        <tr>
+            <td class="text_socialCommunicationScore">2分，脱离社会，可被动接触，不会主动待人，谈话中很多不适词句，容易上当受骗</td>
+        </tr>
+        <tr>
+            <td class="text_socialCommunicationScore">
+                3分，勉强可与人交往，谈吐内容不清楚，表情不恰当
+            </td>
+        </tr>
+        <tr>
+            <td class="text_socialCommunicationScore">
+                4分，难以与人接触
+            </td>
+        </tr>
+
+        <!--社会参与总分-->
+        <tr onclick="sumNumber()">
+            <td align='center' width="15%">
+                <h4>社会参与总分</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text" id='total' name="disability.socialParticipationScore" value="" readonly="readonly" > 分
+            </td>
+            <td>
+                以上5个项目得分之和
+            </td>
+        </tr>
+
+        <!--社会参与分级-->
+        <tr>
+            <td align='center' width="15%">
+                <h4>社会参与分级</h4>
+            </td>
+            <td align='center' width="10%">
+                <input type="text" id='scale' name="disability.socialParticipationClassification" value="" readonly="readonly"> 级
+            </td>
+            <td style="padding:15px 10px">
+                <p>0能力完好：总分0-2分</p>
+                <p>1轻度受损：总分3-7分</p>
+                <p>2中度受损：总分8-13分</p>
+                <p>3重度受损：总分14-20分</p>
+            </td>
+        </tr>
+
+
+    </table>
+</form>
+<!--<button id="btn" onclick=compute3()>记分</button>-->
+<script>
+    function compute(){
+        var count=0,flag=true;
+        $('.box').each(function(i,v){
+            if(v.value==""||v.value=="null"){
+                flag=false;
+                window.android.setDisabilityDatas(-1,"请输入完整评估项");
+                return false;
+            }else if(v.value!='0'&&v.value!='1'&&v.value!='2'&&v.value!='3'&&v.value!='4'){
+                flag=false;
+                window.android.setDisabilityDatas(-1,'您第' + (i + 1) + '评估项输入有误 请重新输入');
+                return false;
+            }
+            count+=parseInt(v.value);
+        })
+        if(flag){
+            $('#total').val(count);
+            if(count<=2){
+                $('#scale').val('0');
+            }else if(count<=7){
+                $('#scale').val('1');
+            }else if(count<=13){
+                $('#scale').val('2');
+            }else if(count<=20){
+                $('#scale').val('3');
+            }
+        }
+        return flag;
+    }
+    function sumNumber(){
+        var count=0;
+        $('.box').each(function(i,v){
+            if(v.value==""||v.value=="null"){
+               window.android.alert("请填入完整评估项");
+                return ;
+            }else if(v.value!='0'&&v.value!='1'&&v.value!='2'&&v.value!='3'&&v.value!='4'){
+                window.android.alert('第' + (i + 1) + '项输入有误,请重新输入');
+                return ;
+            }
+            count+=parseInt(v.value);
+        });
+
+        $('#total').val(count);
+        if(count<=2){
+            $('#scale').val('0');
+        }else if(count<=7){
+            $('#scale').val('1');
+        }else if(count<=13){
+            $('#scale').val('2');
+        }else if(count<=20){
+            $('#scale').val('3');
+        }
+    }
+    function setDisabilityDatas(){
+        if(compute()==false) return;
+        var datas = "";
+        datas = $("form").serialize();
+        datas = decodeURIComponent(datas, true);
+        window.android.setDisabilityDatas(0, datas);
+    }
+
+    callColorValue('lifeAbilityScore','text_lifeAbilityScore',[0,1,2,3,4]);
+    callColorValue('workingAbilityScore','text_workingAbilityScore',[0,1,2,3,4]);
+    callColorValue('timeOrSpaceScore','text_timeOrSpaceScore',[0,1,2,3,4]);
+    callColorValue('characterScore','text_characterScore',[0,1,2,3,4]);
+    callColorValue('socialCommunicationScore','text_socialCommunicationScore',[0,1,2,3,4]);
+</script>
+
+</body>
+</html>
